@@ -18,7 +18,7 @@ bool lane3Finished = false;
 
 
 void setup() {
-    pinMode(button, LOW);
+    pinMode(button, INPUT_PULLUP);
 
     pinMode(solenoid, OUTPUT);
     
@@ -43,7 +43,7 @@ void setup() {
 }
 
 void loop() {
-    if(digitalRead(button)==HIGH && !racing) {
+    if(digitalRead(button)==LOW && !racing) {
         racing = true;
         lane1("red");
         lane2("red");
@@ -72,7 +72,7 @@ void loop() {
     } else {
       //Runs if the start sequence hasn't been started
         //Nothing should happen unless an land end button has been pushed
-        if (digitalRead(end1)==LOW && !(lane1Finished)) {
+        if (digitalRead(end1)==HIGH && !(lane1Finished)) {
             if(place==1) {
                 lane1("green");
                 place++;
