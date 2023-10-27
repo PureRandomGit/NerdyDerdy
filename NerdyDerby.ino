@@ -18,7 +18,7 @@ bool lane3Finished = false;
 
 
 void setup() {
-    pinMode(button, INPUT_PULLUP);
+    pinMode(button, LOW);
 
     pinMode(solenoid, OUTPUT);
     
@@ -43,7 +43,7 @@ void setup() {
 }
 
 void loop() {
-    if(digitalRead(button)==LOW && !racing) {
+    if(digitalRead(button)==HIGH && !racing) {
         racing = true;
         lane1("red");
         lane2("red");
