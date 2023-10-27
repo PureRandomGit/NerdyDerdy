@@ -44,6 +44,7 @@ void setup() {
 
 void loop() {
     if(digitalRead(button)==LOW && !racing) {
+        racing = true;
         lane1("red");
         lane2("red");
         lane3("red");
@@ -67,7 +68,10 @@ void loop() {
         digitalWrite(solenoid, LOW);
         Serial.println("Solenoid Off");
         place = 0;
+        racing = false;
     } else {
+      //Runs if the start sequence hasn't been started
+        //Nothing should happen unless an land end button has been pushed
         if (digitalRead(end1)==LOW && !(lane1Finished)) {
             if(place==1) {
                 lane1("green");
